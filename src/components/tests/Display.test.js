@@ -1,12 +1,39 @@
 
 
+/*
+test("renders without error", () => {
+    render(<Display/>)
+});
 
 
+const testShow = {
+    
+    name:'locket',
+    summary:'quality lockets in pockets',
+    seasons:[
+    
+        
+        {
+            name:"aquired quality locket",
+            episodes:[{},{},{}],
+            id:0
+        },
+        {
+            name:"quality locket in pocket",
+            episodes:[{},{},{}],
+            id:1
+        },
+        {
+            name:"locket taken from pocket",
+            episodes:[{},{},{}],
+            id:2
+        }
 
+    ]
+    
+}
 
-
-
-
+*/
 
 
 

@@ -70,12 +70,21 @@ test('handleSelect is called when an season is selected', () => {
 
 });
 
-test('component renders when no seasons are selected and when rerenders with a season passed in', () => {
+
+     // Not sure how i can test an empty P tag or other, especially before its existant - if anyone ever reads this fill me in i looked everywhere thanks, --Max.
+
+
+/* test('component renders when no seasons are selected and when rerenders with a season passed in', () => {
     render(<Show show={testShow} selectedSeason='none'/>)
     
 
     expect(screen.getByText('','p')).not.toBeInTheDocument()
-});
+}); */
+
+
+
+
+
 
 //Tasks:
 //1. Build an example data structure that contains the show data in the correct format. A show should contain a name, a summary and an array of seasons, each with a id, name and (empty) list of episodes within them. Use console.logs within the client code if you need to to verify the structure of show data.
