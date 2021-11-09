@@ -1,26 +1,80 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { getAllByTestId, getByText, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 
 import Show from './../Show';
 
+
+
 const testShow = {
     //add in approprate test data structure here.
+    
+    name:'locket',
+    summary:'quality lockets in pockets',
+    seasons:[
+    
+        
+        {
+            name:"aquired quality locket",
+            episodes:[{},{},{}],
+            id:0
+        },
+        {
+            name:"quality locket in pocket",
+            episodes:[{},{},{}],
+            id:1
+        },
+        {
+            name:"locket taken from pocket",
+            episodes:[{},{},{}],
+            id:2
+        }
+
+    ]
+    
 }
 
+
+
 test('renders testShow and no selected Season without errors', ()=>{
+    
+    render(<Show show={testShow} selectedSeason='none'/>)
+    
 });
 
 test('renders Loading component when prop show is null', () => {
+    render(<Show show={null}/>)
+    const nullValues = screen.getByTestId('loading-container')
+
+    expect(nullValues).toBeInTheDocument()
 });
 
 test('renders same number of options seasons are passed in', ()=>{
+    render(<Show show={testShow} selectedSeason='none'/>)
+    const qualityLocketSeasons = screen.getAllByTestId('season-option')
+    
+    expect(qualityLocketSeasons).toHaveLength(3)
 });
 
 test('handleSelect is called when an season is selected', () => {
+    render(<Show show={testShow} selectedSeason='none'/>)
+
+    const select = screen.getByRole("combobox", {name: 'Select A Season'})
+    const seasons = screen.getAllByTestId('season-option')
+    userEvent.selectOptions(select,seasons[0])
+    
+    expect(seasons[0].selected).toBe(true)
+    expect(seasons[1].selected).toBe(false)
+    expect(seasons[2].selected).toBe(false)
+
 });
 
 test('component renders when no seasons are selected and when rerenders with a season passed in', () => {
+    render(<Show show={testShow} selectedSeason='none'/>)
+    
+
+    expect(screen.getByText('','p')).not.toBeInTheDocument()
 });
 
 //Tasks:
